@@ -1,19 +1,57 @@
 {
   "name": "chessmate",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "chessmate",
+  "main": "src/server/server.js",
   "scripts": {
+    "build": "webpack --mode production",
+    "start": "npm run build && node src/server/server.js",
+    "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
+    "server": "nodemon src/server/server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Chess-Mate/chessmate.git"
-  },
-  "author": "ChessMate Team",
+  "author": "Chess-Mates",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Chess-Mate/chessmate/issues"
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
   },
-  "homepage": "https://github.com/Chess-Mate/chessmate#readme"
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "4.16.4",
+    "react": "16.5.2",
+    "react-dom": "16.5.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "10.0.1",
+    "babel-loader": "^8.0.4",
+    "clean-webpack-plugin": "0.1.19",
+    "concurrently": "4.0.1",
+    "css-loader": "1.0.0",
+    "eslint": "5.7.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-react": "7.11.1",
+    "file-loader": "2.0.0",
+    "html-webpack-plugin": "3.2.0",
+    "nodemon": "1.18.4",
+    "offline-plugin": "^5.0.5",
+    "style-loader": "0.23.1",
+    "url-loader": "1.1.2",
+    "webpack": "4.22.0",
+    "webpack-cli": "3.1.2",
+    "webpack-dev-server": "3.1.10",
+    "webpack-visualizer-plugin": "^0.1.11"
+  }
 }
