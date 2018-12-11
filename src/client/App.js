@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
 import './app.css';
-import ReactImage from './react.png';
+import Login from './components/Login';
 
 export default class App extends Component {
-  state = { username: null };
+  constructor() {
+    super();
+    this.state = {
+      toggle: false,
+    };
+    this.handleB = this.handleB.bind(this); 
+  }
 
-  componentDidMount() {
-    fetch('/api/getUsername')
-      .then(res => res.json())
-      .then(user => this.setState({ username: user.username }));
+  handleB(){
+    console.log('clicked')
+    this.setState({
+      toggle: !this.state.toggle
+    })
   }
 
   render() {
-    const { username } = this.state;
     return (
       <div>
-        {username ? <h1>{`Hello ${username}`}</h1> : <h1>Loading.. please wait!</h1>}
-        <img src={ReactImage} alt="react" />
+       <Login 
+        handleB = {this.handleB} 
+        toggle = {this.state.toggle} 
+        /> 
       </div>
     );
   }
