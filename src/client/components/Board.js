@@ -13,6 +13,38 @@ class Board extends React.Component {
             a1 : {
                 color: 'white',
                 piece: 'rook',
+            },
+            b1 : {
+                color: 'white',
+                piece: 'knight',
+            },
+            c1 : {
+                color: 'white',
+                piece: 'bishop',
+            },
+            d1 : {
+                color: 'white',
+                piece: 'queen',
+            },
+            e1 : {
+                color: 'white',
+                piece: 'king',
+            },
+            f1 : {
+                color: 'white',
+                piece: 'bishop',
+            },
+            g1 : {
+                color: 'white',
+                piece: 'knight',
+            },
+            h1 : {
+                color: 'white',
+                piece: 'rook',
+            },
+            a4: {
+                color: 'black',
+                piece: 'rook'
             }
         })
     }
@@ -38,11 +70,14 @@ class Board extends React.Component {
 
         let pieces = [];
         Object.keys(this.state).forEach((key, index) => {
-            pieces.push(<Piece 
+            pieces.push(
+            <Piece 
                 key={'piece'+index} 
                 coordinate={key} 
                 color={this.state[key].color}
-                pieceType={this.state[key].piece}/>)
+                pieceType={this.state[key].piece}
+                pieceObj={this.state}
+            />)
         });
 
         return (
