@@ -16,7 +16,7 @@ export default function possibleMoves(pieceObj, coordinates, pieceColor) {
         } else {
             availableMoves.push(currentColumn + i)
         }
-        // console.log(availableMoves, 'North')
+        console.log(availableMoves, 'North')
     }
 
     //////SOUTH MOVES//////
@@ -29,34 +29,39 @@ export default function possibleMoves(pieceObj, coordinates, pieceColor) {
         } else {
             availableMoves.push(currentColumn + i)
         } 
-        // console.log(availableMoves, 'South')
+        console.log(availableMoves, 'South')
     }
 
     //////EAST MOVES////////
+    //convert column letter into ASCII number code set up to h(104)
     for (let i = currentColumn.charCodeAt() + 1; i<104; i++) {
-        if (pieceObj[currentRow + i]) {
-            if (pieceColor !== pieceObj[currentRow + i].color) {
-                availableMoves.push(String.fromCharCode(i) + currentRow)
+        let convertedCoordinate = String.fromCharCode(i) + currentRow; 
+        //convert ASCII code back to letter to concact with row integer to get coordinates used to reference in pieceObj
+        if (pieceObj[convertedCoordinate]) {
+            if (pieceColor !== pieceObj[convertedCoordinate].color) {
+                availableMoves.push(convertedCoordinate)
             } 
             break;
         } else {
-            availableMoves.push(String.fromCharCode(i) + currentRow)
+            availableMoves.push(convertedCoordinate)
         } 
-        // console.log(availableMoves, 'East')
+        console.log(availableMoves, 'East')
     }
     
 
     ////////WEST MOVES/////////
     for (let i = currentColumn.charCodeAt() - 1; i >=97; i--) {
+        let convertedCoordinate = String.fromCharCode(i) + currentRow; 
         //if theres a piece on the left
-        if(pieceObj[currentRow - i]) {
+        //string our column ASCII code and change back to letter
+        if(pieceObj[convertedCoordinate]) {
             //check to see if its own color or not
-            if(pieceColor !== pieceObj[currentRow - i].color) {
-                availableMoves.push(String.fromCharCode(i) + currentRow) 
+            if(pieceColor !== pieceObj[convertedCoordinate].color) {
+                availableMoves.push(convertedCoordinate) 
             }
             break;
         } else {
-            availableMoves.push(String.fromCharCode(i) + currentRow)
+            availableMoves.push(convertedCoordinate)
         }
         console.log(availableMoves, 'West')
     }
