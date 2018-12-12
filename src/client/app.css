@@ -6,3 +6,27 @@ body {
   text-align: center;
   margin: auto;
 }
+
+#board {
+  display:flex;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+}
+
+.square {
+  height: 50px;
+  width: 50px;
+}
+
+.piece {
+  position: absolute;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width:50px;
+  cursor: pointer;
+}

@@ -1,15 +1,14 @@
 import React from 'react'; 
-import WaitingRoom from './WaitingRoom';
+// import WaitingRoom from './WaitingRoom';
+import Board from './Board';
 
 
 const Login = (props) => {
     return(
         <div>
-            <h1>Welcome to Login</h1>
-            <button onClick={() => {props.handleB()}}> Login </button> 
-            {(props.toggle === true) ? 
-                <WaitingRoom /> : <p>Loading....</p>
-            }
+    
+           
+                <Board />
         </div>
     );
 }
