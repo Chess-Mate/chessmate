@@ -7,16 +7,32 @@ export default class App extends Component {
     super();
     this.state = {
       toggle: false,
+      player: {}
     };
-    this.handleB = this.handleB.bind(this); 
   }
 
-  handleB(){
+  handleB = () => {
     console.log('clicked')
+
+    this.oauthLogin();
+
     this.setState({
       toggle: !this.state.toggle
     })
   }
+
+  oauthLogin = () => {
+    console.log('oauthLogin has been invoked');
+    fetch('http://localhost:8080/auth/github')
+      .then(r => r.json())
+      .then(jsonData => {
+        this.setState({
+          player: jsonData
+        })
+      })
+      .then(() => console.log(this.state.user))
+      .catch(err => console.warn(err));
+  };
 
   render() {
     return (
