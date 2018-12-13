@@ -23,9 +23,11 @@ class Board extends React.Component {
             },
             pendingMovesArr : [],
             pendingMovesShowing : false,
+            history : [],
         };
         this.addToPendingPieces = this.addToPendingPieces.bind(this);
         this.updatePiecesObject = this.updatePiecesObject.bind(this);
+        this.addMove = this.addMove.bind(this);
     }
 
     componentDidMount () {
@@ -46,6 +48,7 @@ class Board extends React.Component {
         }
     }
 
+    
     updatePiecesObject(origin, target, color, piece){
         let newPiecesObject = {};
 
@@ -133,6 +136,15 @@ class Board extends React.Component {
             pendingMovesArr : pendingMovesArr,
             pendingMovesShowing: !this.state.pendingMovesShowing
         });
+    }
+
+    addHistory (move) {
+        let historyCopy = this.state.history.slice();
+        historyCopy.push(move);
+
+        this.setState({
+            history : historyCopy
+        })
     }
     
     render() {
