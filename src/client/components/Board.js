@@ -1,10 +1,11 @@
 import React from 'react'; 
 import Square from './Square';
 import Piece from './Piece';
-import Rook from '../controllers/pieces/rook'
-import King from '../controllers/pieces/king'
-import Bishop from '../controllers/pieces/bishop'
+import Rook from '../controllers/pieces/rook';
+import King from '../controllers/pieces/king';
+import Bishop from '../controllers/pieces/bishop';
 import Knight from '../controllers/pieces/knight';
+import Queen from '../controllers/pieces/queen';
 import PendingMove from './PendingMove';
 
 class Board extends React.Component {
@@ -17,6 +18,12 @@ class Board extends React.Component {
                 g5 : new Bishop('g5', 'white'),
                 d4 : new Knight('d4', 'white'),
                 f4 : new Rook('f4', 'black'),
+                c1 : new Knight('c1', 'white'),
+                c3 : new Queen('c3', 'white'),
+                // e1 : {
+                //     color: 'white',
+                //     piece: 'king',
+                // },
             },
             pendingMovesArr : [],
             pendingMovesShowing : false,
