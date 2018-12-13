@@ -21,7 +21,7 @@ class Board extends React.Component {
             pendingMovesArr : [],
             pendingMovesShowing : false,
         };
-        this.addToPiecesObject = this.addToPiecesObject.bind(this);
+        this.addToPendingPieces = this.addToPendingPieces.bind(this);
         this.updatePiecesObject = this.updatePiecesObject.bind(this);
     }
 
@@ -116,8 +116,7 @@ class Board extends React.Component {
     }
 
     //takes two parameters from handleClickPiece in Pieces component
-    addToPiecesObject (coordinateArr, originCoordinates, color, piece) {
-
+    addToPendingPieces (coordinateArr, originCoordinates, color, piece) {
         let pendingMovesArr = coordinateArr.map(coordinate => {
             return {
                 origin : originCoordinates,
@@ -161,7 +160,7 @@ class Board extends React.Component {
                     key={'piece'+index} 
                     pieceObj={this.state.piecesObject[key]}
                     piecesObj={this.state.piecesObject}
-                    addToPiecesObject = {this.addToPiecesObject}
+                    addToPendingPieces = {this.addToPendingPieces}
                 />
             )
         });

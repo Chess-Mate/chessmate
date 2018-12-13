@@ -30,12 +30,9 @@ class Piece extends React.Component {
         }
     }
 
-    //click piece runs addToPiecesObject with two arguments
+    //click piece runs addToPendingPieces with two arguments
     handleClickPiece = (e) => {
-        // this.props.pieceObj.setPossibleMoves(this.props.piecesObj, this.props.pieceObj.coordinate, this.props.pieceObj.pieceColor);
-        console.log(this.props.pieceObj.availableMoves);
-        this.props.addToPiecesObject(this.props.pieceObj.availableMoves, this.props.pieceObj.coordinates, this.props.pieceObj.color, this.props.pieceObj.piece)
-        
+        this.props.addToPendingPieces(this.props.pieceObj.availableMoves, this.props.pieceObj.coordinates, this.props.pieceObj.color, this.props.pieceObj.piece)
     }
 
     convertLetterCoordinateToXPosition(letter) {
