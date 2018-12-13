@@ -1,10 +1,11 @@
 import React from 'react'; 
 import Square from './Square';
 import Piece from './Piece';
-import Rook from '../controllers/pieces/rook'
-import King from '../controllers/pieces/king'
-import Bishop from '../controllers/pieces/bishop'
+import Rook from '../controllers/pieces/rook';
+import King from '../controllers/pieces/king';
+import Bishop from '../controllers/pieces/bishop';
 import Knight from '../controllers/pieces/knight';
+import Queen from '../controllers/pieces/queen';
 import PendingMove from './PendingMove';
 
 class Board extends React.Component {
@@ -15,6 +16,8 @@ class Board extends React.Component {
                 a2 : new Rook('a2', 'white'),
                 e1 : new King('e1', 'white'),
                 g5 : new Bishop('g5', 'white'),
+                c1 : new Knight('c1', 'white'),
+                c3 : new Queen('c3', 'white'),
                 d4 : new Knight('d4', 'white'),
                 f4 : new Rook('f4', 'black'),
             },
@@ -63,10 +66,10 @@ class Board extends React.Component {
                         newPiece = new Bishop(this.state.piecesObject[piece].coordinates, this.state.piecesObject[piece].color)
                         break;
                     }
-                    // case 'queen' : {
-                    //     newPiece = new Knight(this.state.piecesObject[piece].coordinates, this.state.piecesObject[piece].color)
-                    //     break;
-                    // }
+                    case 'queen' : {
+                        newPiece = new Queen(this.state.piecesObject[piece].coordinates, this.state.piecesObject[piece].color)
+                        break;
+                    }
                     case 'king' : {
                         newPiece = new King(this.state.piecesObject[piece].coordinates, this.state.piecesObject[piece].color)
                         break;
@@ -94,10 +97,10 @@ class Board extends React.Component {
                 newPiece = new Bishop(target, color)
                 break;
             }
-            // case 'queen' : {
-            //     newPiece = new Knight(this.state.piecesObject[piece].coordinates, this.state.piecesObject[piece].color)
-            //     break;
-            // }
+            case 'queen' : {
+                newPiece = new Queen(target, color)
+                break;
+            }
             case 'king' : {
                 newPiece = new King(target, color)
                 break;
