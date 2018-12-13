@@ -6,7 +6,6 @@ class Piece {
     // check if the same side king is in check
     let movesToBeRemoved = [];
     this.availableMoves.forEach((move, i) => {
-      console.log(i)
       let copyPiecesObj = {};
       for (let childObject in piecesObj) {
         let childObjectCopy = Object.assign({}, piecesObj[childObject]);
