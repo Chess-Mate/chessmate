@@ -18,15 +18,24 @@ class Piece extends React.Component {
             xPosition : this.convertLetterCoordinateToXPosition(this.props.pieceObj.coordinates.split('')[0]),
         })
     }
-    // componentDidUpdate () {
-    //     this.setState({
-    //         yPosition : this.convertNumberCoordinateToYPosition(this.props.coordinate.split('')[1]),
-    //         xPosition : this.convertLetterCoordinateToXPosition(this.props.coordinate.split('')[0]),
-    //     })
-    // }
+    componentDidUpdate () {
+        let yPosition = this.convertNumberCoordinateToYPosition(this.props.pieceObj.coordinates.split('')[1]);
+        let xPosition = this.convertLetterCoordinateToXPosition(this.props.pieceObj.coordinates.split('')[0]);
 
+        if (yPosition !== this.state.yPosition || xPosition !== this.state.xPosition) {
+            this.setState({
+                yPosition : this.convertNumberCoordinateToYPosition(this.props.pieceObj.coordinates.split('')[1]),
+                xPosition : this.convertLetterCoordinateToXPosition(this.props.pieceObj.coordinates.split('')[0]),
+            })
+        }
+    }
+
+    //click piece runs addToPiecesObject with two arguments
     handleClickPiece = (e) => {
         // this.props.pieceObj.setPossibleMoves(this.props.piecesObj, this.props.pieceObj.coordinate, this.props.pieceObj.pieceColor);
+        console.log(this.props.pieceObj.availableMoves);
+        this.props.addToPiecesObject(this.props.pieceObj.availableMoves, this.props.pieceObj.coordinates, this.props.pieceObj.color, this.props.pieceObj.piece)
+        
     }
 
     convertLetterCoordinateToXPosition(letter) {

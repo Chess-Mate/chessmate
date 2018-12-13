@@ -30,3 +30,12 @@ body {
   width:50px;
   cursor: pointer;
 }
+
+.pendingMove {
+  height: 50px;
+  width: 50px;
+  background-color: hotpink;
+  opacity: .4;
+  position: absolute;
+  z-index: 100;
+}
