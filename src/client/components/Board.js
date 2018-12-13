@@ -27,7 +27,7 @@ class Board extends React.Component {
         };
         this.addToPendingPieces = this.addToPendingPieces.bind(this);
         this.updatePiecesObject = this.updatePiecesObject.bind(this);
-        this.addMove = this.addMove.bind(this);
+        this.addHistory = this.addHistory.bind(this);
     }
 
     componentDidMount () {
