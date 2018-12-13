@@ -6,6 +6,7 @@ import King from '../controllers/pieces/king';
 import Bishop from '../controllers/pieces/bishop';
 import Knight from '../controllers/pieces/knight';
 import Queen from '../controllers/pieces/queen';
+import Pawn from '../controllers/pieces/pawn';
 import PendingMove from './PendingMove';
 
 class Board extends React.Component {
@@ -18,6 +19,7 @@ class Board extends React.Component {
                 g5 : new Bishop('g5', 'white'),
                 c1 : new Knight('c1', 'white'),
                 c3 : new Queen('c3', 'white'),
+                h2 : new Pawn('h2', 'white'),
                 // e1 : {
                 //     color: 'white',
                 //     piece: 'king',
