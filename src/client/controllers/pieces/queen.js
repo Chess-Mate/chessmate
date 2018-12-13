@@ -1,68 +1,72 @@
 import Piece from './piece';
 
-class King extends Piece {
+class Queen extends Piece {
   constructor(coordinates, color) {
     super();
     this.coordinates = coordinates;
     this.color = color;
-    this.piece = 'king';
+    this.piece = 'queen';
   }
+
   setInitialMoves(piecesObj) {
     let currentColumn = this.coordinates[0];
     let currentRow = this.coordinates[1];
     let availableMoves = [];
 
-    let i = parseInt(currentRow) + 1;
-    if (i > 0 && i < 9) {
+    for (let i = parseInt(currentRow) + 1; i <= 8; i++) {
+
       if (piecesObj[currentColumn + i]) {
         if (this.color !== piecesObj[currentColumn + i].color) {
           availableMoves.push(currentColumn + i)
         }
+        break;
       } else {
         availableMoves.push(currentColumn + i)
       }
     }
-
-    i = parseInt(currentRow) - 1;
-    if (i > 0 && i < 9) {
+    for (let i = parseInt(currentRow) - 1; i > 0; i--) {
       if (piecesObj[currentColumn + i]) {
         if (this.color !== piecesObj[currentColumn + i].color) {
           availableMoves.push(currentColumn + i)
         }
+        break;
       } else {
         availableMoves.push(currentColumn + i)
       }
     }
-
-    i = currentColumn.charCodeAt() + 1;
-    let convertedCoordinate = String.fromCharCode(i) + currentRow;
-    if (i > 97 && i < 104) {
+    //convert column letter into ASCII number code set up to h(104)
+    for (let i = currentColumn.charCodeAt() + 1; i <= 104; i++) {
+      let convertedCoordinate = String.fromCharCode(i) + currentRow;
+      //convert ASCII code back to letter to concact with row integer to get this.coordinates used to reference in piecesObj
       if (piecesObj[convertedCoordinate]) {
         if (this.color !== piecesObj[convertedCoordinate].color) {
           availableMoves.push(convertedCoordinate)
         }
+        break;
       } else {
         availableMoves.push(convertedCoordinate)
       }
     }
-    
-    i = currentColumn.charCodeAt() - 1;
-    convertedCoordinate = String.fromCharCode(i) + currentRow;
-    if (i > 97 && i < 104) {
+    for (let i = currentColumn.charCodeAt() - 1; i >= 97; i--) {
+      let convertedCoordinate = String.fromCharCode(i) + currentRow;
+      //if theres a piece on the left
+      //string our column ASCII code and change back to letter
       if (piecesObj[convertedCoordinate]) {
+        //check to see if its own color or not
         if (this.color !== piecesObj[convertedCoordinate].color) {
           availableMoves.push(convertedCoordinate)
         }
+        break;
       } else {
         availableMoves.push(convertedCoordinate)
       }
     }
 
-    i = parseInt(currentRow) + 1;
-    if (currentColumn.length === 1) {
+    for (let i = parseInt(currentRow) + 1; i <= 8; i++) {
+      if (currentColumn.length === 1) {
 
-      currentColumn = currentColumn.charCodeAt() + 1;
-      if (currentColumn > 97 && currentColumn < 104 && i > 0 && i < 9) {
+        currentColumn = currentColumn.charCodeAt() + 1;
+        if (currentColumn < 97 || currentColumn > 104) break;
 
         if (piecesObj[String.fromCharCode(currentColumn) + i]) {
           if (piecesObj[currentColumn + i]) {
@@ -70,19 +74,20 @@ class King extends Piece {
               availableMoves.push(String.fromCharCode(currentColumn) + i)
             }
           }
+          break;
         } else {
           availableMoves.push(String.fromCharCode(currentColumn) + i)
         }
       }
+      currentColumn = String.fromCharCode(currentColumn);
     }
-    currentColumn = String.fromCharCode(currentColumn);
 
     currentColumn = this.coordinates[0];
-    i = parseInt(currentRow) + 1;
-    if (currentColumn.length === 1) {
 
-      currentColumn = currentColumn.charCodeAt() - 1;
-      if (currentColumn > 97 && currentColumn < 104 && i > 0 && i < 9) {
+    for (let i = parseInt(currentRow) + 1; i <= 8; i++) {
+      if (currentColumn.length === 1) {
+        currentColumn = currentColumn.charCodeAt() - 1;
+        if (currentColumn < 97 || currentColumn > 104) break;
 
         if (piecesObj[String.fromCharCode(currentColumn) + i]) {
           if (piecesObj[currentColumn + i]) {
@@ -90,19 +95,21 @@ class King extends Piece {
               availableMoves.push(String.fromCharCode(currentColumn) + i)
             }
           }
+          break;
         } else {
           availableMoves.push(String.fromCharCode(currentColumn) + i)
         }
       }
+      currentColumn = String.fromCharCode(currentColumn);
     }
-    currentColumn = String.fromCharCode(currentColumn);
 
     currentColumn = this.coordinates[0];
-    i = parseInt(currentRow) - 1;
-    if (currentColumn.length === 1) {
 
-      currentColumn = currentColumn.charCodeAt() + 1;
-      if (currentColumn > 97 && currentColumn < 104 && i > 0 && i < 9) {
+    for (let i = parseInt(currentRow) - 1; i > 0; i--) {
+      if (currentColumn.length === 1) {
+
+        currentColumn = currentColumn.charCodeAt() + 1;
+        if (currentColumn < 97 || currentColumn > 104) break;
 
         if (piecesObj[String.fromCharCode(currentColumn) + i]) {
           if (piecesObj[currentColumn + i]) {
@@ -110,19 +117,21 @@ class King extends Piece {
               availableMoves.push(String.fromCharCode(currentColumn) + i)
             }
           }
+          break;
         } else {
           availableMoves.push(String.fromCharCode(currentColumn) + i)
         }
       }
+      currentColumn = String.fromCharCode(currentColumn);
     }
-    currentColumn = String.fromCharCode(currentColumn);
 
     currentColumn = this.coordinates[0];
-    i = parseInt(currentRow) - 1;
-    if (currentColumn.length === 1) {
 
-      currentColumn = currentColumn.charCodeAt() - 1;
-      if (currentColumn > 97 && currentColumn < 104 && i > 0 && i < 9) {
+    for (let i = parseInt(currentRow) - 1; i > 0; i--) {
+      if (currentColumn.length === 1) {
+
+        currentColumn = currentColumn.charCodeAt() - 1;
+        if (currentColumn < 97 || currentColumn > 104) break;
 
         if (piecesObj[String.fromCharCode(currentColumn) + i]) {
           if (piecesObj[currentColumn + i]) {
@@ -130,24 +139,18 @@ class King extends Piece {
               availableMoves.push(String.fromCharCode(currentColumn) + i)
             }
           }
+          break;
         } else {
           availableMoves.push(String.fromCharCode(currentColumn) + i)
         }
       }
+      currentColumn = String.fromCharCode(currentColumn);
     }
-    currentColumn = String.fromCharCode(currentColumn);
 
     this.availableMoves = availableMoves;
-    console.log('availableMoves from King', availableMoves);
+    console.log('availableMoves from Queen', availableMoves);
   }
-
-  setPossibleMoves(piecesObj) {
-  }
-
-  canTakeKing(piecesObj) {
-    return false;
-  }
-
 }
 
-export default King;
+export default Queen;
+
