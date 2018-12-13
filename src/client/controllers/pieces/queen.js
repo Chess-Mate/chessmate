@@ -69,10 +69,8 @@ class Queen extends Piece {
         if (currentColumn < 97 || currentColumn > 104) break;
 
         if (piecesObj[String.fromCharCode(currentColumn) + i]) {
-          if (piecesObj[currentColumn + i]) {
-            if (this.color !== piecesObj[currentColumn + i].color) {
-              availableMoves.push(String.fromCharCode(currentColumn) + i)
-            }
+          if (this.color !== piecesObj[String.fromCharCode(currentColumn) + i].color) {
+            availableMoves.push(String.fromCharCode(currentColumn) + i)
           }
           break;
         } else {
@@ -90,10 +88,8 @@ class Queen extends Piece {
         if (currentColumn < 97 || currentColumn > 104) break;
 
         if (piecesObj[String.fromCharCode(currentColumn) + i]) {
-          if (piecesObj[currentColumn + i]) {
-            if (this.color !== piecesObj[currentColumn + i].color) {
-              availableMoves.push(String.fromCharCode(currentColumn) + i)
-            }
+          if (this.color !== piecesObj[String.fromCharCode(currentColumn) + i].color) {
+            availableMoves.push(String.fromCharCode(currentColumn) + i)
           }
           break;
         } else {
@@ -112,10 +108,8 @@ class Queen extends Piece {
         if (currentColumn < 97 || currentColumn > 104) break;
 
         if (piecesObj[String.fromCharCode(currentColumn) + i]) {
-          if (piecesObj[currentColumn + i]) {
-            if (this.color !== piecesObj[currentColumn + i].color) {
-              availableMoves.push(String.fromCharCode(currentColumn) + i)
-            }
+          if (this.color !== piecesObj[String.fromCharCode(currentColumn) + i].color) {
+            availableMoves.push(String.fromCharCode(currentColumn) + i)
           }
           break;
         } else {
@@ -134,10 +128,8 @@ class Queen extends Piece {
         if (currentColumn < 97 || currentColumn > 104) break;
 
         if (piecesObj[String.fromCharCode(currentColumn) + i]) {
-          if (piecesObj[currentColumn + i]) {
-            if (this.color !== piecesObj[currentColumn + i].color) {
-              availableMoves.push(String.fromCharCode(currentColumn) + i)
-            }
+          if (this.color !== piecesObj[String.fromCharCode(currentColumn) + i].color) {
+            availableMoves.push(String.fromCharCode(currentColumn) + i)
           }
           break;
         } else {
@@ -148,7 +140,7 @@ class Queen extends Piece {
     }
 
     this.availableMoves = availableMoves;
-    console.log('availableMoves from Queen', availableMoves);
+    // console.log('availableMoves from Queen', availableMoves);
   }
 }
 

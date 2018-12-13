@@ -19,16 +19,16 @@ class Board extends React.Component {
                 d4 : new Knight('d4', 'white'),
                 f4 : new Rook('f4', 'black'),
                 c3 : new Queen('c3', 'white'),
-                // e1 : {
-                //     color: 'white',
-                //     piece: 'king',
-                // },
+                d4 : new Knight('d4', 'white'),
+                f4 : new Rook('f4', 'black'),
             },
             pendingMovesArr : [],
             pendingMovesShowing : false,
+            history : [],
         };
-        this.addToPiecesObject = this.addToPiecesObject.bind(this);
+        this.addToPendingPieces = this.addToPendingPieces.bind(this);
         this.updatePiecesObject = this.updatePiecesObject.bind(this);
+        this.addHistory = this.addHistory.bind(this);
     }
 
     componentDidMount () {
@@ -49,6 +49,7 @@ class Board extends React.Component {
         }
     }
 
+    
     updatePiecesObject(origin, target, color, piece){
         let newPiecesObject = {};
 
@@ -69,10 +70,10 @@ class Board extends React.Component {
                         newPiece = new Bishop(this.state.piecesObject[piece].coordinates, this.state.piecesObject[piece].color)
                         break;
                     }
-                    // case 'queen' : {
-                    //     newPiece = new Knight(this.state.piecesObject[piece].coordinates, this.state.piecesObject[piece].color)
-                    //     break;
-                    // }
+                    case 'queen' : {
+                        newPiece = new Queen(this.state.piecesObject[piece].coordinates, this.state.piecesObject[piece].color)
+                        break;
+                    }
                     case 'king' : {
                         newPiece = new King(this.state.piecesObject[piece].coordinates, this.state.piecesObject[piece].color)
                         break;
@@ -100,10 +101,10 @@ class Board extends React.Component {
                 newPiece = new Bishop(target, color)
                 break;
             }
-            // case 'queen' : {
-            //     newPiece = new Knight(this.state.piecesObject[piece].coordinates, this.state.piecesObject[piece].color)
-            //     break;
-            // }
+            case 'queen' : {
+                newPiece = new Queen(target, color)
+                break;
+            }
             case 'king' : {
                 newPiece = new King(target, color)
                 break;
@@ -122,8 +123,7 @@ class Board extends React.Component {
     }
 
     //takes two parameters from handleClickPiece in Pieces component
-    addToPiecesObject (coordinateArr, originCoordinates, color, piece) {
-
+    addToPendingPieces (coordinateArr, originCoordinates, color, piece) {
         let pendingMovesArr = coordinateArr.map(coordinate => {
             return {
                 origin : originCoordinates,
@@ -137,6 +137,15 @@ class Board extends React.Component {
             pendingMovesArr : pendingMovesArr,
             pendingMovesShowing: !this.state.pendingMovesShowing
         });
+    }
+
+    addHistory (move) {
+        let historyCopy = this.state.history.slice();
+        historyCopy.push(move);
+
+        this.setState({
+            history : historyCopy
+        })
     }
     
     render() {
@@ -167,7 +176,7 @@ class Board extends React.Component {
                     key={'piece'+index} 
                     pieceObj={this.state.piecesObject[key]}
                     piecesObj={this.state.piecesObject}
-                    addToPiecesObject = {this.addToPiecesObject}
+                    addToPendingPieces = {this.addToPendingPieces}
                 />
             )
         });
