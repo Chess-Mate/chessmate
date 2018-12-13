@@ -20,6 +20,7 @@ class Board extends React.Component {
                 d4 : new Knight('d4', 'white'),
                 f4 : new Rook('f4', 'black'),
                 c3 : new Queen('c3', 'white'),
+                h2 : new Pawn('h2', 'white')
             },
             pendingMovesArr : [],
             pendingMovesShowing : false,

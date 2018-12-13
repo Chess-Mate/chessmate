@@ -38,7 +38,7 @@ class Pawn extends Piece {
       }
     }
 
-    // can move diagonally right 1 space
+    // can move diagonally right 1 space if occupied by opponent's color
     i = parseInt(currentRow) + 1;
     if (currentColumn.length === 1) {
 
@@ -49,14 +49,12 @@ class Pawn extends Piece {
             if (this.color !== piecesObj[String.fromCharCode(currentColumn) + i].color) {
               availableMoves.push(String.fromCharCode(currentColumn) + i)
             }
-        } else {
-          availableMoves.push(String.fromCharCode(currentColumn) + i)
-        }
+        } 
       }
     }
     currentColumn = String.fromCharCode(currentColumn);
 
-    // can move diagonally left 1 space
+    // can move diagonally left 1 space if occupied by opponent's color
     currentColumn = this.coordinates[0];
     i = parseInt(currentRow) + 1;
     if (currentColumn.length === 1) {
@@ -68,8 +66,6 @@ class Pawn extends Piece {
           if (this.color !== piecesObj[String.fromCharCode(currentColumn) + i].color) {
             availableMoves.push(String.fromCharCode(currentColumn) + i)
           }
-        } else {
-          availableMoves.push(String.fromCharCode(currentColumn) + i)
         }
       }
     }
