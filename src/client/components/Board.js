@@ -18,7 +18,6 @@ class Board extends React.Component {
                 g5 : new Bishop('g5', 'white'),
                 d4 : new Knight('d4', 'white'),
                 f4 : new Rook('f4', 'black'),
-                c1 : new Knight('c1', 'white'),
                 c3 : new Queen('c3', 'white'),
                 // e1 : {
                 //     color: 'white',
