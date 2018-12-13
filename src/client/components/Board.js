@@ -118,6 +118,7 @@ class Board extends React.Component {
         console.log(newPiecesObject);
         this.setState({
             piecesObject : newPiecesObject,
+            pendingMovesShowing: false
         })
     }
 

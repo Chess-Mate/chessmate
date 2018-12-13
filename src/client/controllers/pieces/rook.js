@@ -14,7 +14,6 @@ class Rook extends Piece {
     let currentRow = this.coordinates[1]
     let availableMoves = [];
     for (let i = parseInt(currentRow) +1; i <= 8; i++) {
-
       if (piecesObj[currentColumn + i]) {
         if (this.color !== piecesObj[currentColumn + i].color) {
             availableMoves.push(currentColumn + i)
