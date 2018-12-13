@@ -72,7 +72,7 @@ class Pawn extends Piece {
     currentColumn = String.fromCharCode(currentColumn);
 
     this.availableMoves = availableMoves;
-    console.log('availableMoves from Pawn', availableMoves);
+    // console.log('availableMoves from Pawn', availableMoves);
   }
 
   setPossibleMoves(piecesObj) {
