@@ -1,6 +1,5 @@
 import React from 'react'; 
 import Square from './Square';
-import possibleMoves from '../controllers/pieces/rook';
 
 
 class Piece extends React.Component {
@@ -15,8 +14,8 @@ class Piece extends React.Component {
     }
     componentDidMount () {
         this.setState({
-            yPosition : this.convertNumberCoordinateToYPosition(this.props.coordinate.split('')[1]),
-            xPosition : this.convertLetterCoordinateToXPosition(this.props.coordinate.split('')[0]),
+            yPosition : this.convertNumberCoordinateToYPosition(this.props.pieceObj.coordinates.split('')[1]),
+            xPosition : this.convertLetterCoordinateToXPosition(this.props.pieceObj.coordinates.split('')[0]),
         })
     }
     // componentDidUpdate () {
@@ -27,7 +26,7 @@ class Piece extends React.Component {
     // }
 
     handleClickPiece = (e) => {
-        possibleMoves(this.props.pieceObj, this.props.coordinate, this.props.pieceColor);
+        // this.props.pieceObj.setPossibleMoves(this.props.piecesObj, this.props.pieceObj.coordinate, this.props.pieceObj.pieceColor);
     }
 
     convertLetterCoordinateToXPosition(letter) {
@@ -65,17 +64,16 @@ class Piece extends React.Component {
     render() {
         let cssTop = 350 - (this.state.yPosition * 50);
         let cssLeft = this.state.xPosition * 50;
-        let color = this.props.color
+        let pieceColor = this.props.pieceObj.color
 
-        console.log(cssTop);
         let styles = {
             top : cssTop,
             left : cssLeft,
-            color: color
+            color: pieceColor
         }
         return (
             <div onClick={(e)=>{this.handleClickPiece(e)}} className='piece' style={styles}>
-                <span>{this.props.pieceType}</span>
+                <span>{this.props.pieceObj.piece}</span>
             </div>
         )
     }

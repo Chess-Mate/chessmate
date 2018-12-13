@@ -1,55 +1,40 @@
 import React from 'react'; 
 import Square from './Square';
 import Piece from './Piece';
-
+import Rook from '../controllers/pieces/rook'
+import King from '../controllers/pieces/king'
+import Bishop from '../controllers/pieces/bishop'
+import Knight from '../controllers/pieces/knight';
 
 class Board extends React.Component {
     constructor() {
         super(); 
-        this.state = {}
-    }
-    componentDidMount () {
-        this.setState ({
-            a1 : {
-                color: 'white',
-                piece: 'rook',
-            },
-            b1 : {
-                color: 'white',
-                piece: 'knight',
-            },
-            c1 : {
-                color: 'white',
-                piece: 'bishop',
-            },
-            d1 : {
-                color: 'white',
-                piece: 'queen',
-            },
-            e1 : {
-                color: 'white',
-                piece: 'king',
-            },
-            f1 : {
-                color: 'white',
-                piece: 'bishop',
-            },
-            g1 : {
-                color: 'white',
-                piece: 'knight',
-            },
-            h1 : {
-                color: 'white',
-                piece: 'rook',
-            },
-            a4: {
-                color: 'black',
-                piece: 'rook'
+        this.state = {
+            piecesObject : {
+                a2 : new Rook('a2', 'white'),
+                e1 : new King('e1', 'white'),
+                g5 : new Bishop('g5', 'white'),
+                c1 : new Knight('c1', 'white'),
+                // e1 : {
+                //     color: 'white',
+                //     piece: 'king',
+                // },
+                e4: new Rook('e4', 'black'),
             }
-        })
+        };
+    }
+
+    componentDidMount () {
+        for (let key in this.state.piecesObject) {
+            this.state.piecesObject[key].setInitialMoves(this.state.piecesObject)
+        }
+        for (let key in this.state.piecesObject) {
+            this.state.piecesObject[key].setPossibleMoves(this.state.piecesObject)
+        }
     }
     
     render() {
+        // console.log(this.state.piecesObject);
         let squares = [];
         for(let i = 0; i < 8; i++){
             for(let j = 0; j < 8; j++){
@@ -69,15 +54,14 @@ class Board extends React.Component {
         }
 
         let pieces = [];
-        Object.keys(this.state).forEach((key, index) => {
+        Object.keys(this.state.piecesObject).forEach((key, index) => {
             pieces.push(
-            <Piece 
-                key={'piece'+index} 
-                coordinate={key} 
-                color={this.state[key].color}
-                pieceType={this.state[key].piece}
-                pieceObj={this.state}
-            />)
+                <Piece 
+                    key={'piece'+index} 
+                    pieceObj={this.state.piecesObject[key]}
+                    piecesObj={this.state.piecesObject}
+                />
+            )
         });
 
         return (
