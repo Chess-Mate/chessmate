@@ -138,11 +138,11 @@ class King extends Piece {
     currentColumn = String.fromCharCode(currentColumn);
 
     this.availableMoves = availableMoves;
-    console.log('availableMoves from King', availableMoves);
+    // console.log('availableMoves from King', availableMoves);
   }
 
-  setPossibleMoves(piecesObj) {
-  }
+  // setPossibleMoves(piecesObj) {
+  // }
 
   canTakeKing(piecesObj) {
     return false;

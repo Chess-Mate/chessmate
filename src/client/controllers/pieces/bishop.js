@@ -21,7 +21,7 @@ class Bishop extends Piece {
         if (currentColumn > 104) break;
 
         if (piecesObj[String.fromCharCode(currentColumn) + i]) {
-          if (this.color !== piecesObj[currentColumn + i].color) {
+          if (this.color !== piecesObj[String.fromCharCode(currentColumn) + i].color) {
             availableMoves.push(String.fromCharCode(currentColumn) + i)
           }
           break;
@@ -41,7 +41,7 @@ class Bishop extends Piece {
 
         if (piecesObj[String.fromCharCode(currentColumn) + i]) {
           if (piecesObj[currentColumn + i]) {
-            if (this.color !== piecesObj[currentColumn + i].color) {
+            if (this.color !== piecesObj[String.fromCharCode(currentColumn) + i].color) {
               availableMoves.push(String.fromCharCode(currentColumn) + i)
             }
           }
@@ -63,7 +63,7 @@ class Bishop extends Piece {
 
         if (piecesObj[String.fromCharCode(currentColumn) + i]) {
           if (piecesObj[currentColumn + i]) {
-            if (this.color !== piecesObj[currentColumn + i].color) {
+            if (this.color !== piecesObj[String.fromCharCode(currentColumn) + i].color) {
               availableMoves.push(String.fromCharCode(currentColumn) + i)
             }
           }
@@ -85,7 +85,7 @@ class Bishop extends Piece {
 
         if (piecesObj[String.fromCharCode(currentColumn) + i]) {
           if (piecesObj[currentColumn + i]) {
-            if (this.color !== piecesObj[currentColumn + i].color) {
+            if (this.color !== piecesObj[String.fromCharCode(currentColumn) + i].color) {
               availableMoves.push(String.fromCharCode(currentColumn) + i)
             }
           }
@@ -98,7 +98,7 @@ class Bishop extends Piece {
     }
 
     this.availableMoves = availableMoves;
-    console.log('availableMoves from Bishop', availableMoves);
+    // console.log('availableMoves from Bishop', availableMoves);
   }
 }
 
