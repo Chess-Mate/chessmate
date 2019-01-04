@@ -13,6 +13,7 @@ const invitationRouter = express.Router();
 const gameRouter = express.Router();
 const moveRouter = express.Router();
 
+//authenticate
 sequelize
   .authenticate()
   .then(() => {
